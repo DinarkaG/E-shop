@@ -1,6 +1,6 @@
 public class Nutzer {
-    public String name;
-    public int eindeutNummer;
+    private String name;
+    private int eindeutNummer;
 
 
 

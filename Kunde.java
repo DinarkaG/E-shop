@@ -1,5 +1,6 @@
 public class Kunde extends  Nutzer{
-    public String adresse;
+
+    private String adresse;
     //Warenkorb warenkorb;
 
     public Kunde(String name, int nummer, String a){
