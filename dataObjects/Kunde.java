@@ -1,4 +1,6 @@
-public class Kunde extends  Nutzer{
+package dataObjects;
+
+public class Kunde extends Nutzer {
     public String adresse;
     //Warenkorb warenkorb;
 
