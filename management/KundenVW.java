@@ -1,2 +1,4 @@
-package management;public class KundenVW {
+package management;
+
+public class KundenVW {
 }
