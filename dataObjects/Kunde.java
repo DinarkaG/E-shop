@@ -4,8 +4,8 @@ public class Kunde extends Nutzer {
     public String adresse;
     //Warenkorb warenkorb;
 
-    public Kunde(String name, int nummer, String a){
-        super(name,nummer);
+    public Kunde(String name, int nummer, String passwort, String a){
+        super(name,nummer, passwort);
         this.adresse=a;
 
     }

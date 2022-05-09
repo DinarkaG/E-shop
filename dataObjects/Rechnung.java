@@ -1,5 +1,7 @@
 package dataObjects;
 
+import management.Warenkorb;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

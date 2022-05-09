@@ -33,7 +33,7 @@ public class Ereignis {
     public void setArtikel(Artikel artikel) {
         this.artikel = artikel;
     }
-    
+
     public int getAenderung() {
         return this.aenderung;
     }
