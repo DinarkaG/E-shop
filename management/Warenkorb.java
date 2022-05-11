@@ -1,4 +1,4 @@
 package management;
 
-public class Warenkorb {
+public class Warenkorb{
 }
