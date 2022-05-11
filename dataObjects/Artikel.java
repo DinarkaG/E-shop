@@ -32,7 +32,7 @@ public class Artikel {
     public boolean equals(Object andererArtikel) {
         if (andererArtikel instanceof Artikel)
             return ((this.artikelnummer == ((Artikel) andererArtikel).artikelnummer)
-                    && (this.bezeichnung.equals(((Artikel) andererArtikel).bezeichnung));
+                    && (this.bezeichnung.equals(((Artikel) andererArtikel).bezeichnung)));
         else
             return false;
     }

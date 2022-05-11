@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class ArtikelVW {
-    private ArrayList<Artikel> artikelListe = new ArrayList<>();
+    private ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
 
 
 
@@ -67,6 +67,6 @@ public class ArtikelVW {
                 }
             }}
         return sort;
-    }
+
     }
 }
