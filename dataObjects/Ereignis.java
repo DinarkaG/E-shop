@@ -5,22 +5,24 @@ import java.util.Date;
 
 public class Ereignis {
 
-    //Attribute
+    // Attribute
     private String datum;
     private Artikel artikel;
     private int aenderung;
     private String username;
 
-    //Konstruktor
-    public Ereignis( Artikel artikel, int aenderung, String username) {
+    // Konstruktor
+    public Ereignis(Artikel artikel, int aenderung, String username) {
         datum = generateSimpleDatum();
         this.artikel = artikel;
         this.aenderung = aenderung;
         this.username = username;
     }
 
-    //Getter und Setter
-    public String getDatum() { return datum;}
+    // Getter und Setter
+    public String getDatum() {
+        return datum;
+    }
 
     public String generateSimpleDatum() {
         return new SimpleDateFormat("dd.MM.yyy HH:mm").format(new Date());

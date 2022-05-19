@@ -2,43 +2,21 @@ package dataObjects;
 
 public class Artikel {
 
-    // Item descriptions as attributes
+    //Attribute
     private String bezeichnung;
     private int artikelnummer;
     private int artikelBestand;
-    private int preis;
+    private float preis;
 
-    //constructor methode
-    public Artikel(String bezeichnung, int artikelbestand, int preis, int artikelnummer) {
+    //Konstruktor
+    public Artikel(String bezeichnung, int artikelbestand, float preis, int artikelnummer) {
         this.artikelnummer = artikelnummer;
         this.bezeichnung = bezeichnung;
         this.artikelBestand = artikelbestand;
         this.preis = preis;
     }
 
-    // ------ Dienste der Artikel-Objekte ------
-
-    //to-String methode
-    public String toString() {
-        return "Artikel{" +
-                "Bezeichnung='" + bezeichnung + '\'' +
-                ", Artikelnummer=" + artikelnummer +
-                ", ArtikelBestand=" + artikelBestand +
-                ", Preis=" + preis +
-                '}';
-    }
-
-//methode is used to compare two article objects. The attributes used in comparison are Artikelnummer and Bezeichnung
-    public boolean equals(Object andererArtikel) {
-        if (andererArtikel instanceof Artikel)
-            return ((this.artikelnummer == ((Artikel) andererArtikel).artikelnummer)
-                    && (this.bezeichnung.equals(((Artikel) andererArtikel).bezeichnung));
-        else
-            return false;
-    }
-
-
-    //getter-setter methode (Accesor Methode)
+    //Getter und Setter
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -63,12 +41,11 @@ public class Artikel {
         return artikelBestand;
     }
 
-    public int getPreis() {
+    public float getPreis() {
         return preis;
     }
 
     public void setPreis(int preis) {
         this.preis = preis;
     }
-
 }

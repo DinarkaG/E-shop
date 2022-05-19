@@ -4,79 +4,105 @@ import dataObjects.Artikel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ArtikelVW {
 
-    private ArrayList<Artikel> artikelListe = new ArrayList<>();
+    // Attribute
+    private ArrayList<Artikel> artikelListe;
 
-
-    /**
-     * Methode, die eine KOPIE der Artikelliste zurückgibt.
-     * @return Liste aller Artikel in der artikelListe (Kopie)
-     */
-    public ArrayList<Artikel> getArtikelListe() {
-        return new ArrayList<Artikel>(this.artikelListe);
+    public ArtikelVW() {
+        artikelListe = new ArrayList<Artikel>();
     }
 
+    /**
+     * Methode zum Einfügen eines neuen Artikel in die artikelListe
+     * 
+     * @param bezeichnung
+     * @param artikelbestand
+     * @param preis
+     * @param artikelnummer
+     */
+    public void artikelAnlegen(String bezeichnung, int artikelbestand, float preis, int artikelnummer) {
+        Artikel neuerArtikel = new Artikel(bezeichnung, artikelbestand, preis, artikelnummer);
+        artikelListe.add(neuerArtikel);
+    }
+
+    /**
+     * Methode zum Erhöhen des Bestands eines Artikels
+     * 
+     * @param artikel
+     * @param anzahl
+     */
+    public void bestandErhoehen(Artikel artikel, int anzahl) {
+        // In artikelListe nach gewünschten Artikel suchen
+        for (Artikel lArtikel : artikelListe) {
+            if (lArtikel.equals(artikel)) {
+                // Bei übereinstimmung um gewünschte Anzahl erhöht
+                artikel.setArtikelBestand(artikel.getArtikelBestand() + anzahl);
+            }
+        }
+    }
+
+    /**
+     * Methode zum Veringern des Bestands eines Artikels
+     * 
+     * @param artikel
+     * @param anzahl
+     */
+    public void bestandVerringern(Artikel artikel, int anzahl) {
+        // In artikelListe nach gewünschten Artikel suchen
+        for (Artikel lArtikel : artikelListe) {
+            if (lArtikel.equals(artikel)) {
+                if (lArtikel.getArtikelBestand() > anzahl) {
+                    // Wenn Anzahl kleiner ist als der Artikelbestands des gewünschten Artikels,
+                    // wird der Bestand um Anzahl verringert
+                    artikel.setArtikelBestand(artikel.getArtikelBestand() - anzahl);
+                    // Ansonsten wird der gewünschte Artikel aus der artikelListe genommen
+                } else {
+                    artikelListe.remove(lArtikel);
+                }
+            }
+        }
+    }
 
     /**
      * Methode, die eine Artikelliste zurückgibt, die alphabetisch sortiert ist.
+     * 
      * @return sortierte Liste aller Artikel in der artikelListe (Kopie)
      */
-    public ArrayList<Artikel> alphabet(){
-        //String Array für Artikelbezeichnungen wird erzeugt
-        String[] alphabetisch = new String[artikelListe.size()];
-        int i = 0;
-        //Hinzufügen von allen Artikelbezeichnungen der artikelListe in das alphabetisch Array
-        for (Artikel artikel : artikelListe) {
-            alphabetisch[i] = artikel.getBezeichnung();
-            i++;
-        }
-        //Array sortieren
-        Arrays.sort(alphabetisch);
+    public ArrayList<Artikel> alphabet() {
 
-        //Erzeugen eine neue Arraylist, in der die Artikel sortiert eingefügt werden
-        ArrayList<Artikel> sort = new ArrayList<Artikel>();
-
-        //For-Schleife in der die Artikelbezeichnung des Arrays und der Artikellist verglichen werden
-        for (String bezeichnung : alphabetisch){
-            for(Artikel artikel : artikelListe){
-                //Bei Übereinstimmung wird der Artikel in die neue Arrayliste gepackt
-                if(bezeichnung == artikel.getBezeichnung()){
-                    sort.add(artikel);
-                    break;
-                }
-            }}
-        return sort;
+        ArrayList<Artikel> kopie = new ArrayList<>(artikelListe);
+        Collections.sort(kopie, new Comparator<Artikel>() {
+            @Override
+            public int compare(Artikel o1, Artikel o2) {
+                return o1.getBezeichnung().compareTo(o2.getBezeichnung());
+            }
+        });
+        return kopie;
     }
-
 
     /**
      * Methode, die eine Artikelliste zurückgibt, die numerisch sortiert ist.
+     * 
      * @return sortierte Liste aller Artikel in der artikelListe (Kopie)
      */
-    public ArrayList<Artikel> nummer(){
-        //int Array für Artikelbezeichnungen wird erzeugt
-        int[] numereisch = new int[artikelListe.size()];
-        int i = 0;
-        //Hinzufügen von allen Artikelnummern der artikelListe in das numerisch Array
-        for (Artikel artikel : artikelListe) {
-            numereisch[i] = artikel.getArtikelnummer();
-            i++;
-        }
-        //Array sortieren
-        Arrays.sort(numereisch);
-        //Erzeugen eine neue Arraylist, in der die Artikel sortiert eingefügt werden
-        ArrayList<Artikel> sort = new ArrayList<Artikel>();
-        //For-Schleife in der die Artikelnummern des Arrays und der Artikellist verglichen werden
-        for (int nummer : numereisch){
-            for(Artikel artikel : artikelListe){
-                //Bei Übereinstimmung wird der Artikel in die neue Arrayliste gepackt
-                if(nummer == artikel.getArtikelnummer()){
-                    sort.add(artikel);
-                    break;
-                }
-            }}
-        return sort;
+    public ArrayList<Artikel> nummer() {
+
+        ArrayList<Artikel> kopie = new ArrayList<>(artikelListe);
+        Collections.sort(kopie, new Comparator<Artikel>() {
+            @Override
+            public int compare(Artikel o1, Artikel o2) {
+                return o1.getArtikelnummer() - (o2.getArtikelnummer());
+            }
+        });
+        return kopie;
+    }
+
+    // Getter und Setter
+    public ArrayList<Artikel> getArtikelListe() {
+        return artikelListe;
     }
 }

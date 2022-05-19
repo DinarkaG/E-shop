@@ -1,20 +1,61 @@
 package dataObjects;
 
 public class Kunde extends Nutzer {
-    public String adresse;
-    //Warenkorb warenkorb;
+    // Attribute
+    public String straße;
+    public String hausnummer;
+    public int postleitzahl;
+    public String stadt;
+    // private Warenkorb warenkorb;
 
-    public Kunde(String name, int nummer, String passwort, String a){
-        super(name,nummer, passwort);
-        this.adresse=a;
-
+    // Konstruktor
+    public Kunde(String name, int nummer, String passwort, String straße, String hausnummer, int postleitzahl,
+            String stadt) {
+        super(name, nummer, passwort);
+        this.straße = straße;
+        this.hausnummer = hausnummer;
+        this.postleitzahl = postleitzahl;
+        this.stadt = stadt;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    // Getter und Setter
+    public void setStraße(String straße) {
+        this.straße = straße;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getStraße() {
+        return straße;
     }
+
+    public String getHausnummer() {
+        return hausnummer;
+    }
+
+    public void setHausnummer(String hausnummer) {
+        this.hausnummer = hausnummer;
+    }
+
+    public int getPostleitzahl() {
+        return postleitzahl;
+    }
+
+    public void setPostleitzahl(int postleitzahl) {
+        this.postleitzahl = postleitzahl;
+    }
+
+    public String getStadt() {
+        return stadt;
+    }
+
+    public void setStadt(String stadt) {
+        this.stadt = stadt;
+    }
+
+    // public WarenkorbVW getWarenkorb() {
+    // return warenkorb;
+    // }
+
+    // public void setWarenkorb(Warenkorb warenkorb) {
+    // this.warenkorb = warenkorb;
+    // }
 }

@@ -1,22 +1,22 @@
 package dataObjects;
 
 public class Nutzer {
+    //Attribute
     public String name;
-    public int eindeutNummer;
+    public int id;
     public String passwort;
 
-
-
+    //Konstruktor
     public Nutzer(String name, int nummer, String passwort){
         this.name = name;
-        this.eindeutNummer = nummer;
+        this.id = nummer;
         this.passwort = passwort;
     }
 
 
-
-    public void setEindeutNummer(int eindeutNummer) {
-        this.eindeutNummer = eindeutNummer;
+    //Getter und Setter
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -25,8 +25,8 @@ public class Nutzer {
 
     public void setPasswort(String passwort){this.passwort = passwort;}
 
-    public int getEindeutNummer() {
-        return eindeutNummer;
+    public int getId() {
+        return id;
     }
 
     public String getName() {

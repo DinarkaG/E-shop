@@ -1,16 +1,19 @@
 package dataObjects;
 
 public class WarenkorbArtikel {
-    //attributes
+
+    //Attribute
     public Artikel wkArtikel;
     public int anzahl;
+    public float preis;
 
+    //Konstruktor
     public WarenkorbArtikel(Artikel wkArtikel, int anzahl) {
         this.wkArtikel = wkArtikel;
         this.anzahl = anzahl;
     }
 
-    //getter-setter methode (Accesor Methode)
+    //Getter und Setter
     public Artikel getWkArtikel() {
         return wkArtikel;
     }
@@ -18,6 +21,8 @@ public class WarenkorbArtikel {
     public void setWkArtikel(Artikel wkArtikel) {
         this.wkArtikel = wkArtikel;
     }
+
+    public float getPreis(){ return wkArtikel.getPreis(); }
 
     public int getAnzahl() {
         return anzahl;
@@ -27,4 +32,5 @@ public class WarenkorbArtikel {
         this.anzahl = anzahl;
     }
 
+    public  int getArtikelnummer(){return wkArtikel.getArtikelnummer();}
 }
