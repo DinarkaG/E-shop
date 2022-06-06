@@ -1,7 +1,6 @@
 package management;
 
 import dataObjects.Kunde;
-import dataObjects.Mitarbeiter;
 
 import java.util.ArrayList;
 
@@ -24,10 +23,11 @@ public class KundenVW {
      * @param postleitzahl
      * @param stadt
      */
-    public void kundeEinfuegen(String name, int nummer, String passwort, String straße, String hausnummer,
+    public Kunde kundeEinfuegen(String name, int nummer, String passwort, String straße, String hausnummer,
             int postleitzahl, String stadt) {
         Kunde neuerKunde = new Kunde(name, nummer, passwort, straße, hausnummer, postleitzahl, stadt);
         kundenListe.add(neuerKunde);
+        return neuerKunde;
     }
 
     /**
@@ -37,17 +37,32 @@ public class KundenVW {
      * @param passwort
      * @return den zutreffenden Kunden
      */
-    public Kunde kundeSuchen(int id, String passwort) {
+    public Kunde anmelden(int id, String passwort) {
         for (Kunde kunde : kundenListe) {
-            if ((id - kunde.getId() == 0) && passwort.equals(kunde.getPasswort())) {
+            if (id == kunde.getId() && passwort.equals(kunde.getPasswort())) {
                 return kunde;
             }
         }
         return null;
     }
 
+    /**
+     * Methode, mit der man nach bereits vergebenen Ids sucht
+     * 
+     * @param id
+     * @return
+     */
+    public boolean idSuchen(int id) {
+        for (Kunde kunden : kundenListe) {
+            if (id == kunden.getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Getter und Setter
-    public static ArrayList<Kunde> getKundenListe() {
+    public ArrayList<Kunde> getKundenListe() {
         return kundenListe;
     }
 }

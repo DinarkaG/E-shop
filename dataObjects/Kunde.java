@@ -2,11 +2,10 @@ package dataObjects;
 
 public class Kunde extends Nutzer {
     // Attribute
-    public String straße;
+    private String straße;
     public String hausnummer;
     public int postleitzahl;
     public String stadt;
-    // private Warenkorb warenkorb;
 
     // Konstruktor
     public Kunde(String name, int nummer, String passwort, String straße, String hausnummer, int postleitzahl,
@@ -51,11 +50,4 @@ public class Kunde extends Nutzer {
         this.stadt = stadt;
     }
 
-    // public WarenkorbVW getWarenkorb() {
-    // return warenkorb;
-    // }
-
-    // public void setWarenkorb(Warenkorb warenkorb) {
-    // this.warenkorb = warenkorb;
-    // }
 }

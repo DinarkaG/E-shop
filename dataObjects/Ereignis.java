@@ -6,20 +6,40 @@ import java.util.Date;
 public class Ereignis {
 
     // Attribute
+    public enum EreignisTyp {
+        NEU, KAUF, EINLAGERUNG, AUSLAGERUNG
+    };
+
     private String datum;
     private Artikel artikel;
-    private int aenderung;
-    private String username;
+    private String aenderung;
+    private EreignisTyp aktion;
+    private Nutzer nutzer;
 
     // Konstruktor
-    public Ereignis(Artikel artikel, int aenderung, String username) {
+    public Ereignis(Artikel artikel, String aenderung, Nutzer nutzer, EreignisTyp aktion) {
         datum = generateSimpleDatum();
         this.artikel = artikel;
         this.aenderung = aenderung;
-        this.username = username;
+        this.nutzer = nutzer;
+        this.aktion = aktion;
+    }
+
+    @Override
+    public String toString() {
+        return getDatum() + " " + getArtikel().getBezeichnung() + " " + getAenderung() + " " + getAktion() + " von " +
+                getNutzer().getName();
     }
 
     // Getter und Setter
+    public EreignisTyp getAktion() {
+        return this.aktion;
+    }
+
+    public void setAktion(EreignisTyp aktion) {
+        this.aktion = aktion;
+    }
+
     public String getDatum() {
         return datum;
     }
@@ -36,20 +56,20 @@ public class Ereignis {
         this.artikel = artikel;
     }
 
-    public int getAenderung() {
+    public String getAenderung() {
         return this.aenderung;
     }
 
-    public void setAenderung(int aenderung) {
+    public void setAenderung(String aenderung) {
         this.aenderung = aenderung;
     }
 
-    public String getUsername() {
-        return this.username;
+    public Nutzer getNutzer() {
+        return this.nutzer;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNutzer(Nutzer nutzer) {
+        this.nutzer = nutzer;
     }
 
 }

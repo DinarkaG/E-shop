@@ -1,22 +1,30 @@
 package dataObjects;
 
-public class Artikel {
+import java.io.Serializable;
 
-    //Attribute
+public class Artikel implements Serializable {
+
+    // Attribute
     private String bezeichnung;
     private int artikelnummer;
     private int artikelBestand;
-    private float preis;
+    private double preis;
 
-    //Konstruktor
-    public Artikel(String bezeichnung, int artikelbestand, float preis, int artikelnummer) {
+    // Konstruktor
+    public Artikel(String bezeichnung, int artikelbestand, double preis, int artikelnummer) {
         this.artikelnummer = artikelnummer;
         this.bezeichnung = bezeichnung;
         this.artikelBestand = artikelbestand;
         this.preis = preis;
     }
 
-    //Getter und Setter
+    @Override
+    public String toString() {
+        return "Nr. " + getArtikelnummer() + "  " + getBezeichnung() + "  " + getArtikelBestand() + " Stck  "
+                + getPreis() + "€";
+    }
+
+    // Getter und Setter
     public void setBezeichnung(String bezeichnung) {
         this.bezeichnung = bezeichnung;
     }
@@ -41,11 +49,12 @@ public class Artikel {
         return artikelBestand;
     }
 
-    public float getPreis() {
+    public double getPreis() {
         return preis;
     }
 
     public void setPreis(int preis) {
         this.preis = preis;
     }
+
 }

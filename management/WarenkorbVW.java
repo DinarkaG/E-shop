@@ -2,75 +2,38 @@ package management;
 
 import java.util.ArrayList;
 
-import dataObjects.Artikel;
-import dataObjects.WarenkorbArtikel;
+import dataObjects.Kunde;
 
 public class WarenkorbVW {
 
-    // Attribute
-    public ArrayList<WarenkorbArtikel> wkInhalt = new ArrayList<>();
+    // Attritube
+    private ArrayList<Warenkorb> warenkoerbe;
 
-    /**
-     * Methode, um einen neuen Warenkorbartikel in die wkInhalt ArrayList
-     * hinzuzufügen
-     * 
-     * @param artikel
-     * @param anzahl
-     */
-    public void artikelHinzufuegen(Artikel artikel, int anzahl) {
-        WarenkorbArtikel wkArtikel = new WarenkorbArtikel(artikel, anzahl);
-        wkInhalt.add(wkArtikel);
+    public WarenkorbVW() {
+        warenkoerbe = new ArrayList<Warenkorb>();
     }
 
-    /**
-     * Methode, um die Anzahl eines Warenkorbartikels zu erhöhen
-     * 
-     * @param artikel
-     * @param anzahl
-     */
-    public void artikelAnzahlErhoehen(Artikel artikel, int anzahl) {
-        for (WarenkorbArtikel wkArtikel : wkInhalt) {
-            if (wkArtikel.equals(artikel)) {
-                wkArtikel.setAnzahl(wkArtikel.getAnzahl() + anzahl);
+    // Getter und Setter
+    public ArrayList<Warenkorb> getWarenkoerbe() {
+        return this.warenkoerbe;
+    }
+
+    public void setWarenkoerbe(ArrayList<Warenkorb> warenkoerbe) {
+        this.warenkoerbe = warenkoerbe;
+    }
+
+    public void warenkorbHinzufuegen(Kunde kunde) {
+        warenkoerbe.add(new Warenkorb(kunde));
+    }
+
+    // Generiert den Warenkorb zum eingeloggten Kunden
+    public Warenkorb getWarenkorbForKunde(Kunde kunde) {
+        for (Warenkorb warenkorb : this.warenkoerbe) {
+            if (warenkorb.getKunde().getId() == kunde.getId()) {
+                return warenkorb;
             }
         }
+        return null;
     }
 
-    /**
-     * Methode, um die Anzahl eines Warenkorbartikels zu verringern
-     * 
-     * @param artikel
-     * @param anzahl
-     */
-    public void artikelAnzahlVerringern(Artikel artikel, int anzahl) {
-        for (WarenkorbArtikel wkArtikel : wkInhalt) {
-            if (wkArtikel.equals(artikel)) {
-                if (wkArtikel.getAnzahl() > anzahl) {
-                    wkArtikel.setAnzahl(wkArtikel.getAnzahl() - anzahl);
-                } else
-                    wkInhalt.remove(wkArtikel);
-            }
-        }
-    }
-
-    /**
-     * Methode zum Löschen eines Artikels aus dem wkInhalt
-     * 
-     * @param artikel
-     */
-    public void artikelLoeschen(Artikel artikel) {
-        wkInhalt.removeIf(warenkorbArtikel -> warenkorbArtikel.equals(artikel));
-    }
-
-    /**
-     * Methode zum Leeren des wkInhalts
-     */
-    public void leeren() {
-        wkInhalt.clear();
-    }
-
-    // Getter und Setter Methoden
-    public ArrayList<WarenkorbArtikel> getWarenkorbArtikel() {
-        return wkInhalt;
-    }
 }

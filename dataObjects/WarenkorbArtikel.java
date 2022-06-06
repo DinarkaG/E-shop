@@ -2,18 +2,30 @@ package dataObjects;
 
 public class WarenkorbArtikel {
 
-    //Attribute
+    // Attribute
     public Artikel wkArtikel;
     public int anzahl;
-    public float preis;
 
-    //Konstruktor
+    // Konstruktor
     public WarenkorbArtikel(Artikel wkArtikel, int anzahl) {
         this.wkArtikel = wkArtikel;
         this.anzahl = anzahl;
     }
 
-    //Getter und Setter
+    public String toString(WarenkorbArtikel artikel) {
+        if (artikel.getWkArtikel() instanceof MassengutArtikel) {
+            return "Nr. " + artikel.getArtikelnummer() + "  " + artikel.getBezeichnung() + "  "
+                    + ((MassengutArtikel) artikel.getWkArtikel()).getPackungsgroesse() + "er Packung  "
+                    + artikel.getAnzahl() + " Stck  " + artikel.getPreis() + "€";
+        } else {
+            return "Nr. " + artikel.getArtikelnummer() + "  " + artikel.getBezeichnung() + "  "
+                    + artikel.getAnzahl() + " Stck  "
+                    + artikel.getPreis() + "€";
+        }
+
+    }
+
+    // Getter und Setter
     public Artikel getWkArtikel() {
         return wkArtikel;
     }
@@ -22,7 +34,9 @@ public class WarenkorbArtikel {
         this.wkArtikel = wkArtikel;
     }
 
-    public float getPreis(){ return wkArtikel.getPreis(); }
+    public double getPreis() {
+        return wkArtikel.getPreis();
+    }
 
     public int getAnzahl() {
         return anzahl;
@@ -32,5 +46,11 @@ public class WarenkorbArtikel {
         this.anzahl = anzahl;
     }
 
-    public  int getArtikelnummer(){return wkArtikel.getArtikelnummer();}
+    public int getArtikelnummer() {
+        return wkArtikel.getArtikelnummer();
+    }
+
+    public String getBezeichnung() {
+        return wkArtikel.getBezeichnung();
+    }
 }
